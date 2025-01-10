@@ -41,6 +41,7 @@ const config = {
         blue: {
           "100": "#E4ECFF",
         },
+        amethyst : "#9B51E0",
         purple: "#CBACF9",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
