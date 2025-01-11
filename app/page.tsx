@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import Grid from "@/components/Grid";
 import { Meteors } from "@/components/ui/Meteor";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import { FaHome } from "react-icons/fa";
@@ -11,8 +12,9 @@ export default function Home() {
         { name: "Home", link: "/", icon: <FaHome /> }
       ]} />
 
-      <div className="relative z-20 max-w-7xl w-full">
+      <div className="z-20 max-w-7xl w-full">
         <Hero />
+        <Grid />
       </div>
     </main>
   );
