@@ -1,11 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import animationData from "@/data/confetti.json";
-import Lottie from "react-lottie";
+import dynamic from 'next/dynamic';
+import { BackgroundBeams } from "./BackgroundBeams";
+
+
+
 
 // Also install this npm i --save-dev @types/react-lottie
+
 
 
 import { cn } from "@/lib/utils";
@@ -23,7 +28,7 @@ export const BentoGrid = ({
         <div
             className={cn(
                 // change gap-4 to gap-8, change grid-cols-3 to grid-cols-5, remove md:auto-rows-[18rem], add responsive code
-                "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-8 mx-auto",
+                "grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-8 mx-auto px-[100px]",
                 className
             )}
         >
@@ -56,21 +61,28 @@ export const BentoGridItem = ({
     const rightLists = ["VueJS", "NuxtJS", "GraphQL", "Flutter"];
 
     const [copied, setCopied] = useState(false);
-
-    const defaultOptions = {
-        loop: copied,
-        autoplay: copied,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice",
-        },
-    };
+     // Control Lottie animation
 
     const handleCopy = () => {
-        const text = "hsu@jsmastery.pro";
-        navigator.clipboard.writeText(text);
+        navigator.clipboard.writeText("resyadera@gmail.com");
         setCopied(true);
+
+        // Start animation by setting isStopped to false
+
     };
+
+    useEffect(() => {
+        let timer: NodeJS.Timeout;
+
+        if (copied) {
+            timer = setTimeout(() => {
+                setCopied(false);
+                // Stop animation after showing
+            }, 3000);
+        }
+
+        return () => clearTimeout(timer);
+    }, [copied]);
 
     return (
         <div
@@ -127,7 +139,7 @@ export const BentoGridItem = ({
                     </div>
 
                     {id === 4 && (
-                        <div className="flex gap-2 lg:gap-5 w-fit absolute -right-3 lg:-right-2 py-5">
+                        <div className="flex gap-2 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
                             {/* Left list */}
                             <div className="flex flex-col gap-3 md:gap-3 lg:gap-5 overflow-y-auto scrollbar-hide max-h-40 lg:max-h-60">
                                 {leftLists.map((item, i) => (
@@ -156,19 +168,18 @@ export const BentoGridItem = ({
                         </div>
                     )}
 
+                    {
+                        id === 2 && (
+                            <BackgroundBeams/>
+                        )
+                    }
+
                     {id === 6 && (
-                        <div className="mt-5 relative">
+                        <div className="mt-10 relative">
                             {/* button border magic from tailwind css buttons  */}
                             {/* add rounded-md h-8 md:h-8, remove rounded-full */}
                             {/* remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 */}
                             {/* add handleCopy() for the copy the text */}
-                            <div
-                                className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
-                                    }`}
-                            >
-                                {/* <img src="/confetti.gif" alt="confetti" /> */}
-                                <Lottie options={defaultOptions} height={200} width={400} />
-                            </div>
 
                             <TailwindButton
                                 title={copied ? "Email is Copied!" : "Copy my email address"}
