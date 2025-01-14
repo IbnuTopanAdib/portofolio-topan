@@ -1,7 +1,6 @@
 export const navItems = [
     { name: "About", link: "#about" },
     { name: "Projects", link: "#projects" },
-    { name: "Testimonials", link: "#testimonials" },
     { name: "Contact", link: "#contact" },
 ];
 
@@ -138,7 +137,7 @@ export const projects1 = [
 export const projects2 = [
     {
         id: 1,
-        title: "Rekomendasi Makanan mengggunakan",
+        title: "Sistem Rekomendasi Makanan",
         des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
         img: "/p1.svg",
         iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
@@ -295,14 +294,20 @@ export const workExperience = [
 export const socialMedia = [
     {
         id: 1,
+        link: "github.com",
+        name: "github",
         img: "/git.svg",
     },
     {
         id: 2,
+        link: "github.com",
+        name: "github",
         img: "/twit.svg",
     },
     {
         id: 3,
+        link: "github.com",
+        name: "github",
         img: "/link.svg",
     },
 ];

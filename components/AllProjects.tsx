@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Tabs } from "./ui/Tabs";
 import Projects from "./Projects";
 import { projects, projects1, projects2 } from "@/data";
@@ -39,10 +38,12 @@ const AllProjects = () => {
     ];
 
     return (
-        <div className="flex flex-col h-full w-full my-10 py-[5rem]">
-            <h1 className='text-3xl font-semibold text-center my-10'>Projects I Have Created</h1>
+        <section className="flex flex-col h-full w-full my-10 py-[5rem]" id="projects">
+            <h1 className="heading mb-5">
+                My <span className="text-purple">Projects</span>
+            </h1>
             <Tabs tabs={tabs} />
-        </div>
+        </section>
     );
 }
 
